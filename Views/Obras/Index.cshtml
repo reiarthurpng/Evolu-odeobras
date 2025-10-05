@@ -1,0 +1,44 @@
+@model IEnumerable<EvolucaoObra.Models.Obra>
+
+@{
+    ViewData["Title"] = "Obras";
+}
+
+<h1>Obras</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Nova Obra</a>
+</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Responsável</th>
+            <th>Status</th>
+            <th>Etapa Atual</th>
+            <th>Data Início</th>
+            <th>Data Término Prevista</th>
+            <th>Data Conclusão</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.Nome</td>
+            <td>@item.Responsavel</td>
+            <td>@item.Status</td>
+            <td>@item.EtapaAtual</td>
+            <td>@item.DataInicio.ToShortDateString()</td>
+            <td>@item.DataTerminoPrevista?.ToShortDateString()</td>
+            <td>@item.DataConclusao?.ToShortDateString()</td>
+            <td>
+                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

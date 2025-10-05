@@ -1,0 +1,20 @@
+@model EvolucaoObra.Models.Obra
+
+@{
+    ViewData["Title"] = "Detalhes da Obra";
+}
+
+<h1>Detalhes da Obra</h1>
+
+<div class="mb-2"><strong>Nome:</strong> @Model.Nome</div>
+<div class="mb-2"><strong>Endereço:</strong> @Model.Endereco</div>
+<div class="mb-2"><strong>Responsável:</strong> @Model.Responsavel</div>
+<div class="mb-2"><strong>Data Início:</strong> @Model.DataInicio.ToShortDateString()</div>
+<div class="mb-2"><strong>Data Término Prevista:</strong> @Model.DataTerminoPrevista?.ToShortDateString()</div>
+<div class="mb-2"><strong>Data Conclusão:</strong> @Model.DataConclusao?.ToShortDateString()</div>
+<div class="mb-2"><strong>Status:</strong> @Model.Status</div>
+<div class="mb-2"><strong>Etapa Atual:</strong> @Model.EtapaAtual</div>
+<div class="mb-2"><strong>Observações:</strong> @Model.Observacoes</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>
